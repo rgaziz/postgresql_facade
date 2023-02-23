@@ -62,4 +62,31 @@
             std::vector < std::string > fields {"id", "name"};
             std::vector < std::vector < std::string > > values {{"1", "'test1'"}, {"2", "'test2'"}, {"3", "'test3'"}};     
            
-            bool state  = db_facade.insert_group("t_table", fields, values, 10); <\pre>                      
+            bool state  = db_facade.insert_group("t_table", fields, values, 10); <\pre>        
+            
+            
+            
+Пример кода
+<pre>
+
+#include <databasex/postgresql/psql_facade.h>
+ 
+// Создание объекта
+PsqlFacade db_facade("host=localhost port=5432 dbname=mydb user=user password=quwerty123 connect_timeout=10");
+ 
+// Подключение к БД
+if (not db_facade.connect()) {
+    std::cerr << "Connect to DB failed!") << std::endl;
+}
+ 
+// Исполнение запроса
+auto result = db_facade.execute("SELECT * FROM my_table WHERE id = 123");
+if (not result.empty()) {
+  for (auto &row : result) {
+     std::cout << *row.get_value<int64_t>("id") << std::endl;
+     std::cout << *row.get_value<std::string>("name") << std::endl;
+     std::cout << *row.get_value<std::string>("date") << std::endl; 
+  }
+}
+<\pre>
+            
