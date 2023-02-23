@@ -66,10 +66,9 @@
             
             
             
-Пример кода
+**Пример кода**
 <pre>
-
-#include <databasex/postgresql/psql_facade.h>
+#include </psql_facade.h>
  
 // Создание объекта
 PsqlFacade db_facade("host=localhost port=5432 dbname=mydb user=user password=quwerty123 connect_timeout=10");
